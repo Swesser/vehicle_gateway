@@ -54,13 +54,15 @@ private:
     pkt.timestamp = msg->header.stamp.sec + msg->header.stamp.nanosec / (1000 * 1000 * 1000);
 
     pkt.channels[0] = ((-1 * msg->axes[2] + 1) / 2 * 1000) + 1000;   // roll
-    pkt.channels[1] = ((msg->axes[3] + 1) / 2 * 1000) + 1000;   // pitch
-    pkt.channels[2] = ((msg->axes[1] + 1) / 2 * 1000) + 1000;   // yaw
-    pkt.channels[3] = ((msg->axes[0] + 1) / 2 * 1000) + 1000;   // throtlle
-    pkt.channels[4] = (msg->buttons[0] * 1000) + 1000;   // aux1;
-    pkt.channels[5] = (msg->buttons[1] * 1000) + 1000;   // aux2;
-    pkt.channels[6] = (msg->buttons[2] * 1000) + 1000;   // aux3;
-    pkt.channels[7] = (msg->buttons[3] * 1000) + 1000;   // aux4;
+pkt.channels[1] = ((msg->axes[3] + 1) / 2 * 1000) + 1000;   // pitch
+pkt.channels[2] = ((msg->axes[1] + 1) / 2 * 1000) + 1000;   // yaw
+pkt.channels[3] = ((msg->axes[0] + 1) / 2 * 1000) + 1000;   // throttle
+
+// Treat AUX1, AUX2, AUX3, and AUX4 as axes (assuming axis 6 to 9 are AUX1 to AUX4)
+    pkt.channels[4] = ((msg->axes[6] + 1) / 2 * 1000) + 1000;   // aux1 (Axis 6)
+    pkt.channels[5] = ((msg->axes[7] + 1) / 2 * 1000) + 1000;   // aux2 (Axis 7)
+    pkt.channels[6] = ((msg->axes[8] + 1) / 2 * 1000) + 1000;   // aux3 (Axis 8)
+    pkt.channels[7] = ((msg->axes[9] + 1) / 2 * 1000) + 1000;   // aux4 (Axis 9)
     pkt.channels[8] = 1000;
     pkt.channels[9] = 1000;
     pkt.channels[10] = 1000;
