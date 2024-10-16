@@ -53,10 +53,12 @@ private:
     rc_packet pkt;
     pkt.timestamp = msg->header.stamp.sec + msg->header.stamp.nanosec / (1000 * 1000 * 1000);
 
-    pkt.channels[0] = ((-1 * msg->axes[2] + 1) / 2 * 1000) + 1000;   // roll
-pkt.channels[1] = ((msg->axes[3] + 1) / 2 * 1000) + 1000;   // pitch
-pkt.channels[2] = ((msg->axes[1] + 1) / 2 * 1000) + 1000;   // yaw
-pkt.channels[3] = ((msg->axes[0] + 1) / 2 * 1000) + 1000;   // throttle
+    pkt.channels[2] = ((-1 * msg->axes[2] + 1) / 2 * 1000) + 1000;   // roll
+    pkt.channels[3] = ((-1 * msg->axes[3] + 1) / 2 * 1000) + 1000;   // pitch
+    pkt.channels[1] = ((-1 * msg->axes[1] + 1) / 2 * 1000) + 1000;   // yaw
+    pkt.channels[0] = ((-1 * msg->axes[0] + 1) / 2 * 1000) + 1000;   // throttle
+    
+    // axis names are possibly messed up 
 
 // Treat AUX1, AUX2, AUX3, and AUX4 as axes (assuming axis 6 to 9 are AUX1 to AUX4)
     pkt.channels[4] = ((msg->axes[6] + 1) / 2 * 1000) + 1000;   // aux1 (Axis 6)
