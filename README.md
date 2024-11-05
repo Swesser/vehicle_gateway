@@ -64,7 +64,7 @@ mkdir -p ~/vg/src
 cd ~/vg/src
 git clone https://github.com/osrf/vehicle_gateway
 cd ~/vg
-vcs import src < src/dependencies.repos
+vcs import src < src/vehicle_gateway/dependencies.repos
 source /opt/ros/humble/setup.bash
 rosdep update && rosdep install --from-paths src --ignore-src -y --skip-keys="gz-transport12 gz-common5 gz-math7 gz-msgs9 gz-gui7 gz-cmake3 gz-sim7 zenohc gz-transport7 gz-plugin2"
 sudo apt install python3-colcon-common-extensions
