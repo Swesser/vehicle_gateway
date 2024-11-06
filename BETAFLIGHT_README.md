@@ -17,6 +17,7 @@ It's already available in `master` branch.
     3. In the side tabs you need to configure the following:
       - `Modes`: Configure arm in `AUX1` (range `1500` - `2100`)
       - `Motors`: Select `PWM` and enable `3D`
+      - `Ports`: add one more UART port
       Remember to click `Save` in order to commit the changes. You can shut down and reopen `betaflight_SITL.elf` to check that the settings have been saved in `Betaflight Configurator`.
     4. Once you have verified that the changes have been committed you will need to copy the configuration file `eeprom.bin` that has been generated from `~/vg/install/betaflight_sim/share/betaflight_sim/bin/eeprom.bin` to `~/vg/install/betaflight_sim/share/betaflight_sim/config/eeprom.bin`:
 
